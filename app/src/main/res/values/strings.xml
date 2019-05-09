@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">TaxiUnico_LesPaundras_Taxista</string>
+    <!-- Strings related to dummy travel code -->
+    <string name="generate_trip_code">Generate trip code</string>
+    <string name="trip_code">code1234plsCopyMe</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_register">Register</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="user_name">Full name</string>
+    <string name="card">Billing card</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="form_error">Incomplete or incorrect form data</string>
+    <!-- Strings related to navigation bar -->
+    <string name="title_activity_navbar">NavbarActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_trips">Trips</string>
+    <string name="title_account">Account</string>
+    <string name="title_add_trip">Add trip</string>
+    <!-- Strings related to home fragment -->
+    <string name="home_current_trip">Current trip</string>
+    <string name="home_driver">Your client:</string>
+    <!-- Strings related to trips fragment -->
+    <string name="trips_past_trips">Past trips</string>
+    <string name="trips_upcoming_trips">Upcoming trips</string>
+    <!-- Strings related to account fragment -->
+    <string name="account_name">Name</string>
+    <string name="account_payment">Credit or debit card number</string>
+    <!-- Strings related to add trip fragment -->
+    <string name="add_trip_enter_code">Enter trip code</string>
+    <string name="add_trip_code_hint">Trip code</string>
+    <!-- Strings related to AddAddressActivity -->
+    <string name="add_address_hint">Address</string>
+    <!-- Strings related to RatingActivity -->
+    <string name="rating_title">Rate driver</string>
+    <string name="rating_button_rate">Rate</string>
+    <!-- Miscellaneous strings -->
+    <string name="button_ok">OK</string>
+    <string name="button_save_changes">Save changes</string>
+    <string name="address_success">Change address</string>
+    <string name="address_set">Address set success</string>
+    <string name="add_round_trip">Add roundtrip trip</string>
+    <string name="back_trip">Set comeback trip</string>
+    <string name="add_origin">Add origin address</string>
+    <string name="add_destination">Add destination address</string>
+    <!-- Strings related to home trip info -->
+    <string name="home_detail_src">Src</string>
+    <string name="home_detail_dest">Dest</string>
+    <string name="home_client_name">Client Name</string>
+
+    <string name="preferences_file">preferences</string>
+    <string name="email_key">email</string>
+    <string name="password_key">password</string>
+    <string name="date_key">date</string>
+    <string name="logout">Log Out</string>
+</resources>
