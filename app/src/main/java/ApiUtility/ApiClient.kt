@@ -98,6 +98,30 @@ class ApiClient(private val ctx: Context) {
         }
     }
 
+    fun getTaxi(email: String, completion: (taxi: Taxi?, status: Boolean, message: String) -> Unit) {
+        val route = ApiRoute.GetTaxi(email, ctx)
+        this.performRequest(route) {success,response ->
+            if(success) {
+                val taxi: Taxi = Gson().fromJson(response.json.toString(), Taxi::class.java)
+                completion.invoke(taxi, success, "Get Taxi success")
+            } else {
+                completion.invoke(null, success, response.message)
+            }
+        }
+    }
+
+    fun startTrip(tripId: String, completion: (trip: TaxiTrip?, status: Boolean, message: String) -> Unit) {
+        val route = ApiRoute.StartTrip(tripId, ctx)
+        this.performRequest(route){success, response ->
+            if(success) {
+                val trip: TaxiTrip = Gson().fromJson(response.json.toString(), TaxiTrip::class.java)
+                completion.invoke(trip, success, "Trip initiated")
+            } else {
+                completion.invoke(null, success, response.message)
+            }
+        }
+    }
+
     /**
      * Call google maps api to get coordinates from an addres
      */
