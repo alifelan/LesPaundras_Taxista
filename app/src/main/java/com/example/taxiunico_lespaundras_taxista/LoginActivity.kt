@@ -150,7 +150,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
     private fun loginCall(emailStr: String, passwordStr: String) {
         // Show a progress spinner
         showProgress(true)
-        ApiClient(this).login(emailStr, passwordStr){ logged, message ->
+        ApiClient(this).taxiLogin(emailStr, passwordStr){ logged, message ->
             showProgress(false)
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
             if (logged) {
