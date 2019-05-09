@@ -33,8 +33,14 @@
     <string name="trips_past_trips">Past trips</string>
     <string name="trips_upcoming_trips">Upcoming trips</string>
     <!-- Strings related to account fragment -->
+    <string name="account_title">Account info</string>
     <string name="account_name">Name</string>
-    <string name="account_payment">Credit or debit card number</string>
+    <string name="account_plate_title">Plate:</string>
+    <string name="account_plate">HZG-4576</string>
+    <string name="account_rating_title">Rating:</string>
+    <string name="account_rating">4.6 stars</string>
+    <string name="account_email_title">Email:</string>
+    <string name="account_email">hello@example.com</string>
     <!-- Strings related to add trip fragment -->
     <string name="add_trip_enter_code">Enter trip code</string>
     <string name="add_trip_code_hint">Trip code</string>
