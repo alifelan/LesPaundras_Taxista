@@ -38,8 +38,39 @@ class FragmentHome : Fragment() {
         mapFragment.getMapAsync{
             googleMap = it
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(19.4362, -99.1373), 10f))
+            setRoute()
         }
     }
+
+    private fun setRoute() {
+        ApiClient(activity?.applicationContext!!).getTaxiCurrentOrNextTrip(model.taxi?.email!!) {trip, current, success, message ->
+            if(success && trip != null) {
+                setInfo(trip, current)
+                val origin = "${trip?.origin?.address},${trip?.origin?.city},${trip?.origin?.state}"
+                val destination = "${trip?.destination?.address},${trip?.destination?.city},${trip?.destination?.state}"
+                ApiClient(activity?.applicationContext!!).getDirections(origin, destination){route, success, message ->
+                    if(success) {
+                        val lineOptions = PolylineOptions()
+                        lineOptions.addAll(route?.points)
+                        lineOptions.width(6f)
+                        lineOptions.color(ContextCompat.getColor(activity?.applicationContext!!, R.color.gray))
+                        googleMap.addPolyline(lineOptions)
+                        val oLatLng = LatLng(trip?.origin?.latitue!!, trip.origin.longitude)
+                        googleMap.addMarker(MarkerOptions().position(oLatLng).title(trip.origin.name))
+                        val dLatLng = LatLng(trip.destination.latitue, trip.destination.longitude)
+                        googleMap.addMarker(MarkerOptions().position(dLatLng).title(trip.destination.name))
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(oLatLng, 12f))
+                    } else {
+                        home_text_title.text = "No trip"
+                        Toast.makeText(activity?.applicationContext!!, message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } else {
+                Toast.makeText(activity?.applicationContext, message, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 
     private fun setInfo(trip: TaxiTrip, current: Boolean) {
         if(!current) {
@@ -47,7 +78,7 @@ class FragmentHome : Fragment() {
         }
         home_text_src.text = trip.origin.name
         home_text_dest.text = trip.destination.name
-        home_text_driver_info_name.text = trip.taxi.driverName
+        home_text_driver_info_name.text = trip.user.name
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
