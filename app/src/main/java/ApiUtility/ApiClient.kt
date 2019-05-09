@@ -91,6 +91,13 @@ class ApiClient(private val ctx: Context) {
         }
     }
 
+    fun taxiLogin(email: String, password: String,completion: (logged: Boolean, message: String) -> Unit) {
+        val route = ApiRoute.TaxiLogin(email, password, ctx)
+        this.performRequest(route){success, response ->
+            completion.invoke(success, response.message)
+        }
+    }
+
     /**
      * Call google maps api to get coordinates from an addres
      */

@@ -53,6 +53,8 @@ sealed class ApiRoute {
     data class GetDirections(var origin: String, var destination: String, var ctx: Context) : ApiRoute()
     data class CreateTaxiTrip(var email: String, var busTripId: String, var state: String, var city: String, var address: String, var latlng: LatLng,var trip: Int, var price: Double, var distance: ValueText, var duration: ValueText, var ctx: Context) : ApiRoute()
     data class GetCurrentOrNext(var email: String, var ctx: Context) : ApiRoute()
+    data class TaxiLogin(var email: String, var password: String, var ctx: Context) : ApiRoute()
+    data class GetTaxi(var email: String, var ctx: Context) : ApiRoute()
 
     /**
      * Url to be used for the api call
@@ -73,6 +75,8 @@ sealed class ApiRoute {
                 )}&destination=${this.destination.replace(' ', '+')}&units=metric&key=$API_KEY"
                 is CreateTaxiTrip -> "$baseUrl/createTaxiTrip/"
                 is GetCurrentOrNext -> "$baseUrl/getCurrentOrNext/${this.email}"
+                is TaxiLogin -> "$baseUrl/taxiLogin/"
+                is GetTaxi -> "$baseUrl/taxi/${this.email}"
             }
         }
 
@@ -92,6 +96,8 @@ sealed class ApiRoute {
                 is GetDirections -> Request.Method.GET
                 is CreateTaxiTrip -> Request.Method.POST
                 is GetCurrentOrNext -> Request.Method.GET
+                is TaxiLogin -> Request.Method.POST
+                is GetTaxi -> Request.Method.GET
             }
         }
 
@@ -154,6 +160,12 @@ sealed class ApiRoute {
                     })
                 }
                 is GetCurrentOrNext -> null
+                is TaxiLogin -> {
+                    val json = JSONObject()
+                    json.put("email", this.email)
+                    json.put("password", this.password)
+                }
+                is GetTaxi -> null
             }
         }
 
