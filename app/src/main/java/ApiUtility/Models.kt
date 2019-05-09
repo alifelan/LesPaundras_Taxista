@@ -12,7 +12,7 @@ import kotlinx.android.parcel.Parcelize
 data class User(
     @SerializedName("name") var name: String = "",
     @SerializedName("email") var email: String = "",
-    @SerializedName("rating") var rating : Int = 0,
+    @SerializedName("rating") var rating : Double = 0.0,
     @SerializedName("trips") var trips : Int = 0
 ) : JSONConvertable, Parcelable
 
@@ -94,7 +94,7 @@ data class TaxiTrip(
     @SerializedName("id") var id: String = "",
     @SerializedName("origin") var origin: Place,
     @SerializedName("destination") var destination: Place,
-    @SerializedName("date") var date: String = "",
+    @SerializedName("date") var date: String? = "",
     @SerializedName("bus_trip") var busTrip: BusTrip,
     @SerializedName("user") var user: User,
     @SerializedName("taxi") var taxi: Taxi,
@@ -105,7 +105,7 @@ data class TaxiTrip(
 ) : JSONConvertable, Parcelable
 
 @Parcelize
-data class UserTaxiTrips(
+data class TaxiTaxiTrips(
     @SerializedName("past_trips") var pastTrips: MutableList<TaxiTrip>,
     @SerializedName("future_trips") var futureTrips: MutableList<TaxiTrip>,
     @SerializedName("current_trip") var currentTrips: MutableList<TaxiTrip>,

@@ -57,6 +57,13 @@ class NavbarActivity : AppCompatActivity() {
         if(intent.hasExtra(LoginActivity.EMAIL)) {
             val model = ViewModelProviders.of(this).get(UserViewModel::class.java)
             email = intent.extras!!.getString(LoginActivity.EMAIL)!!
+            ApiClient(this).getTaxi(email){ taxi, success, message ->
+                if(success) {
+                    model.taxi = taxi
+                } else {
+                    Toast.makeText(this@NavbarActivity, message, Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
