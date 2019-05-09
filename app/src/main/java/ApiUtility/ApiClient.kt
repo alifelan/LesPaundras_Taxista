@@ -122,6 +122,18 @@ class ApiClient(private val ctx: Context) {
         }
     }
 
+    fun rateUser(tripId: String, rating: Double, completion: (trip: TaxiTrip?, status: Boolean, message: String) -> Unit) {
+        val route = ApiRoute.RateUser(tripId, rating, ctx)
+        this.performRequest(route){success, response->
+            if(success) {
+                val trip: TaxiTrip = Gson().fromJson(response.json.toString(), TaxiTrip::class.java)
+                completion.invoke(trip,success, "User rated")
+            } else {
+                completion.invoke(null, success, response.message)
+            }
+        }
+    }
+
     /**
      * Call google maps api to get coordinates from an addres
      */
