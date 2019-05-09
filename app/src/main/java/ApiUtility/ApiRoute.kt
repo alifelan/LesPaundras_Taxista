@@ -57,6 +57,7 @@ sealed class ApiRoute {
     data class GetTaxi(var email: String, var ctx: Context) : ApiRoute()
     data class StartTrip(var tripId: String,var ctx: Context) : ApiRoute()
     data class RateUser(var tripId: String, var rating: Double, var ctx: Context) : ApiRoute()
+    data class GetTaxiCurrentOrNext(var email: String, var ctx: Context) : ApiRoute()
 
     /**
      * Url to be used for the api call
@@ -81,6 +82,7 @@ sealed class ApiRoute {
                 is GetTaxi -> "$baseUrl/taxi/${this.email}"
                 is StartTrip -> "$baseUrl/startTrip/"
                 is RateUser -> "$baseUrl/rateUser/"
+                is GetTaxiCurrentOrNext -> "$baseUrl/getTaxiCurrentOrNext/${this.email}"
             }
         }
 
@@ -104,6 +106,7 @@ sealed class ApiRoute {
                 is GetTaxi -> Request.Method.GET
                 is StartTrip -> Request.Method.POST
                 is RateUser -> Request.Method.POST
+                is GetTaxiCurrentOrNext -> Request.Method.GET
             }
         }
 
@@ -181,6 +184,7 @@ sealed class ApiRoute {
                     json.put("taxiTripId", this.tripId)
                     json.put("rating", this.rating)
                 }
+                is GetTaxiCurrentOrNext -> null
             }
         }
 
