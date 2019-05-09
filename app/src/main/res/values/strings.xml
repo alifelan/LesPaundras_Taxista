@@ -56,6 +56,19 @@
     <string name="home_detail_src">Src</string>
     <string name="home_detail_dest">Dest</string>
     <string name="home_client_name">Client Name</string>
+    <string name="home_start_trip">Start trip</string>
+    <string name="home_end_trip">End trip</string>
+    <string name="home_refresh_trips">Refresh trips</string>
+    <!-- Strings related to rows in Trips Fragment -->
+    <string name="row_trip_code">Trip code: 12345</string>
+    <string name="row_price">$85.53</string>
+    <string name="row_src_dest">MTY-REYNOSA</string>
+    <string name="row_src_address">Source: Garza Sada 2501, Mty</string>
+    <string name="row_dest_address">Destination: Central Mty</string>
+    <string name="row_date">15/4/2019, 11:32 AM</string>
+    <string name="row_driver">Rolando Gomez</string>
+    <string name="row_driver_plate">FKD-8862</string>
+    <string name="row_status">Status: Pending</string>
 
     <string name="preferences_file">preferences</string>
     <string name="email_key">email</string>
