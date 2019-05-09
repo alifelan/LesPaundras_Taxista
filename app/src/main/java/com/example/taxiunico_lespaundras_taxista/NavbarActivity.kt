@@ -33,6 +33,10 @@ class NavbarActivity : AppCompatActivity() {
                 loadFragment(FragmentTrips())
                 return@OnNavigationItemSelectedListener true
             }
+            R.id.navigation_account -> {
+                loadFragment(FragmentAccount())
+                return@OnNavigationItemSelectedListener true
+            }
         }
         false
     }
