@@ -122,12 +122,24 @@ class ApiClient(private val ctx: Context) {
         }
     }
 
-    fun rateUser(tripId: String, rating: Double, completion: (trip: TaxiTrip?, status: Boolean, message: String) -> Unit) {
+    fun rateUser(tripId: String, rating: Float, completion: (trip: TaxiTrip?, status: Boolean, message: String) -> Unit) {
         val route = ApiRoute.RateUser(tripId, rating, ctx)
         this.performRequest(route){success, response->
             if(success) {
                 val trip: TaxiTrip = Gson().fromJson(response.json.toString(), TaxiTrip::class.java)
                 completion.invoke(trip,success, "User rated")
+            } else {
+                completion.invoke(null, success, response.message)
+            }
+        }
+    }
+
+    fun getTaxiTrips(email: String, completion: (trips: TaxiTaxiTrips?, status: Boolean, message: String) -> Unit) {
+        val route = ApiRoute.GetTaxiTrips(email, ctx)
+        this.performRequest(route) {success, response ->
+            if(success) {
+                val trips: TaxiTaxiTrips = Gson().fromJson(response.json.toString(), TaxiTaxiTrips::class.java)
+                completion.invoke(trips, success, "Got all user trips")
             } else {
                 completion.invoke(null, success, response.message)
             }
