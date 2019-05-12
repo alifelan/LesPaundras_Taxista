@@ -106,7 +106,8 @@ data class Taxi(
     @SerializedName("plate") var plate: String = "",
     @SerializedName("model") var model: String = "",
     @SerializedName("brand") var brand: String = "",
-    @SerializedName("taxi_number") var taxi_number: String = ""
+    @SerializedName("taxi_number") var taxi_number: String = "",
+    @SerializedName("rating") var rating: Double = 0.0
 ) : JSONConvertable, Parcelable
 
 /**
