@@ -63,14 +63,12 @@ class NavbarActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(this@NavbarActivity, message, Toast.LENGTH_SHORT).show()
                 }
+                if(savedInstanceState == null)
+                    fragmentManager.beginTransaction().add(R.id.fragment_container, FragmentHome()).commit()
             }
         }
 
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-
-        // load home fragment first
-        if(savedInstanceState == null)
-            fragmentManager.beginTransaction().add(R.id.fragment_container, FragmentHome()).commit()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
