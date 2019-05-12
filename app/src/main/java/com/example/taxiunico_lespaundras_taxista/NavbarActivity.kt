@@ -45,6 +45,7 @@ class NavbarActivity : AppCompatActivity() {
     val fragmentManager = supportFragmentManager
     var email = ""
     lateinit var sharedPref: SharedPreferences
+    var currentFragment: Fragment? = null
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -66,6 +67,10 @@ class NavbarActivity : AppCompatActivity() {
 
     fun loadFragment(selectedFragment: Fragment) {
         val transaction = fragmentManager.beginTransaction()
+        if(currentFragment != null) {
+            transaction.hide(currentFragment!!)
+        }
+        currentFragment = selectedFragment
         transaction.replace(R.id.fragment_container, selectedFragment)
         transaction.addToBackStack(null)  // enables back button with navbar items
         transaction.commit()
@@ -87,7 +92,7 @@ class NavbarActivity : AppCompatActivity() {
                     Toast.makeText(this@NavbarActivity, message, Toast.LENGTH_SHORT).show()
                 }
                 if(savedInstanceState == null)
-                    fragmentManager.beginTransaction().add(R.id.fragment_container, FragmentHome()).commit()
+                    loadFragment(FragmentHome())
             }
         }
 
