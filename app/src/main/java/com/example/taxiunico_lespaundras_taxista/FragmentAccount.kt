@@ -33,6 +33,9 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_account.*
 import java.lang.Exception
 
+/**
+ * Shows fields containing the driver's information
+ */
 class FragmentAccount : Fragment() {
 
     lateinit var model: UserViewModel
