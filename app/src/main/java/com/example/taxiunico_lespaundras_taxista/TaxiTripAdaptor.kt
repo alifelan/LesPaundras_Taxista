@@ -9,6 +9,9 @@ import android.widget.BaseAdapter
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.row.*
 
+/**
+ * Adapter for showing the trips of the taxi, past and future
+ */
 class TaxiTripAdaptor(private val context: Context, private val trips: MutableList<TaxiTrip>) : BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?):View {

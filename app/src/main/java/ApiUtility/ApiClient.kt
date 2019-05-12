@@ -114,6 +114,9 @@ class ApiClient(private val ctx: Context) {
         }
     }
 
+    /**
+     * Login taxi user to application
+     */
     fun taxiLogin(email: String, password: String,completion: (logged: Boolean, message: String) -> Unit) {
         val route = ApiRoute.TaxiLogin(email, password, ctx)
         this.performRequest(route){success, response ->
@@ -121,6 +124,9 @@ class ApiClient(private val ctx: Context) {
         }
     }
 
+    /**
+     * Get own information
+     */
     fun getTaxi(email: String, completion: (taxi: Taxi?, status: Boolean, message: String) -> Unit) {
         val route = ApiRoute.GetTaxi(email, ctx)
         this.performRequest(route) {success,response ->
@@ -133,6 +139,9 @@ class ApiClient(private val ctx: Context) {
         }
     }
 
+    /**
+     * Start a trip with a user
+     */
     fun startTrip(tripId: String, completion: (trip: TaxiTrip?, status: Boolean, message: String) -> Unit) {
         val route = ApiRoute.StartTrip(tripId, ctx)
         this.performRequest(route){success, response ->
@@ -145,6 +154,9 @@ class ApiClient(private val ctx: Context) {
         }
     }
 
+    /**
+     * Rate user
+     */
     fun rateUser(tripId: String, rating: Float, completion: (trip: TaxiTrip?, status: Boolean, message: String) -> Unit) {
         val route = ApiRoute.RateUser(tripId, rating, ctx)
         this.performRequest(route){success, response->
@@ -157,6 +169,9 @@ class ApiClient(private val ctx: Context) {
         }
     }
 
+    /**
+     * Get the trips belonging to the taxi
+     */
     fun getTaxiTrips(email: String, completion: (trips: TaxiTaxiTrips?, status: Boolean, message: String) -> Unit) {
         val route = ApiRoute.GetTaxiTrips(email, ctx)
         this.performRequest(route) {success, response ->
@@ -277,6 +292,9 @@ class ApiClient(private val ctx: Context) {
         }
     }
 
+    /**
+     * Get the closest trip: if active bring that one, if not bring the one with the closes date
+     */
     fun getTaxiCurrentOrNextTrip(email: String, completion: (trip: TaxiTrip?, current: Boolean, status: Boolean, message: String) -> Unit) {
         val route = ApiRoute.GetTaxiCurrentOrNext(email, ctx)
         this.performRequest(route) {success, response ->

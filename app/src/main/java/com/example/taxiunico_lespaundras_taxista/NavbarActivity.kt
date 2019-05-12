@@ -99,11 +99,17 @@ class NavbarActivity : AppCompatActivity() {
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
 
+    /**
+     * Method for creation of upper menu bar
+     */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.top_bar, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
+    /**
+     * For logout button
+     */
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId) {
             R.id.widget_logout -> {

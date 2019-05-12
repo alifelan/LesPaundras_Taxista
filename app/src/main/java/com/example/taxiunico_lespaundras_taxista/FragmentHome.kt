@@ -92,6 +92,9 @@ class FragmentHome : Fragment() {
         }
     }
 
+    /**
+     * Display map containing the route belonging to current trip
+     */
     private fun setRoute() {
         ApiClient(activity?.applicationContext!!).getTaxiCurrentOrNextTrip(model.taxi?.email!!) {trip, current, success, message ->
             this@FragmentHome.trip = trip
@@ -122,7 +125,9 @@ class FragmentHome : Fragment() {
         }
     }
 
-
+    /**
+     * Fill client information
+     */
     private fun setInfo(trip: TaxiTrip, current: Boolean) {
         if(!current) {
             home_text_title.text = "Next trip"

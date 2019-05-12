@@ -32,6 +32,9 @@ import android.os.PersistableBundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_rating.*
 
+/**
+ * Activity that shows stars to rate the client
+ */
 class RatingActivity : AppCompatActivity() {
 
     lateinit var trip: TaxiTrip
