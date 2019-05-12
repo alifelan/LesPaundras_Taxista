@@ -29,7 +29,7 @@ class FragmentHome : Fragment() {
     lateinit var mapFragment: SupportMapFragment
     lateinit var googleMap: GoogleMap
     var trip: TaxiTrip? = null
-    private lateinit var model: UserViewModel
+    lateinit var model: UserViewModel
     var started = false
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -54,6 +54,7 @@ class FragmentHome : Fragment() {
                     ApiClient(activity?.applicationContext!!).startTrip(trip?.id!!) {_, success, message ->
                         if(success) {
                             home_button_start_end_trip.setText(R.string.home_end_trip)
+                            started = true
                         } else {
                             Toast.makeText(activity?.applicationContext, "Try again to start trip", Toast.LENGTH_SHORT).show()
                         }
@@ -73,7 +74,6 @@ class FragmentHome : Fragment() {
             this@FragmentHome.trip = trip
             if(success && trip != null) {
                 setInfo(trip, current)
-                home_button_start_end_trip.visibility = View.VISIBLE
                 val origin = "${trip?.origin?.address},${trip?.origin?.city},${trip?.origin?.state}"
                 val destination = "${trip?.destination?.address},${trip?.destination?.city},${trip?.destination?.state}"
                 ApiClient(activity?.applicationContext!!).getDirections(origin, destination){route, success, message ->
@@ -103,6 +103,9 @@ class FragmentHome : Fragment() {
     private fun setInfo(trip: TaxiTrip, current: Boolean) {
         if(!current) {
             home_text_title.text = "Next trip"
+            home_button_start_end_trip.visibility = View.GONE
+        } else {
+            home_button_start_end_trip.visibility = View.VISIBLE
         }
         home_text_src.text = trip.origin.name
         home_text_dest.text = trip.destination.name
