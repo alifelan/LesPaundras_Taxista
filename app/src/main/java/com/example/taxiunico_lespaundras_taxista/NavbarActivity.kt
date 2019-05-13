@@ -71,7 +71,7 @@ class NavbarActivity : AppCompatActivity() {
             transaction.hide(currentFragment!!)
         }
         currentFragment = selectedFragment
-        transaction.replace(R.id.fragment_container, selectedFragment)
+        transaction.add(R.id.fragment_container, selectedFragment)
         transaction.addToBackStack(null)  // enables back button with navbar items
         transaction.commit()
     }
