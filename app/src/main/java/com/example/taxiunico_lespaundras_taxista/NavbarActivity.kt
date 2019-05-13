@@ -127,9 +127,20 @@ class NavbarActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        fragmentManager.putFragment(outState!!, FRAGMENT, currentFragment!!)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        currentFragment = fragmentManager.getFragment(savedInstanceState!!, FRAGMENT)
+    }
+
     companion object {
         val TRIP : String = "TRIP"
         val FIRST: String = "FIRST"
         val USER: String = "USER"
+        val FRAGMENT:String = "FRAGMENT"
     }
 }
