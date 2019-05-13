@@ -135,8 +135,8 @@ class FragmentHome : Fragment() {
         } else {
             home_button_start_end_trip.visibility = View.VISIBLE
         }
-        home_text_src.text = trip.origin.name
-        home_text_dest.text = trip.destination.name
+        home_text_src.text = "Source: " + trip.origin.name
+        home_text_dest.text = "Destination: " + trip.destination.name
         home_text_driver_info_name.text = trip.user.name
         started = trip.status == "AC"
         if(started) {

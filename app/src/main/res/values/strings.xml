@@ -20,8 +20,9 @@
     </string>
     <string name="form_error">Incomplete or incorrect form data</string>
     <!-- Strings related to navigation bar -->
-    <string name="title_activity_navbar">NavbarActivity</string>
-    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_navbar">Taxi Único</string>
+    <string name="title_activity_login">Taxi Único Taxista</string>
+    <string name="title_activity_rating">Calificación</string>
     <string name="title_home">Home</string>
     <string name="title_trips">Trips</string>
     <string name="title_account">Account</string>

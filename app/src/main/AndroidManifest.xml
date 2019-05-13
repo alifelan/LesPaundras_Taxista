@@ -17,6 +17,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name="com.example.taxiunico_lespaundras_taxista.RatingActivity"
+                  android:label="@string/title_activity_rating"
                   android:screenOrientation="portrait"
                   android:configChanges="orientation|screenSize">
         </activity>
@@ -24,11 +25,6 @@
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyDQVUiK_t-ui74iRfPc3phKkJltx6YO4bc"/>
-
-        <activity android:name="com.example.taxiunico_lespaundras_taxista.AddTripActivity"
-                    android:screenOrientation="portrait"
-                    android:configChanges="orientation|screenSize">
-        </activity>
 
         <activity
                 android:name="com.example.taxiunico_lespaundras_taxista.NavbarActivity"
@@ -38,7 +34,7 @@
         </activity>
         <activity
                 android:name="com.example.taxiunico_lespaundras_taxista.LoginActivity"
-                android:label="@string/app_name"
+                android:label="@string/title_activity_login"
                 android:screenOrientation="portrait"
                 android:configChanges="orientation|screenSize">
             <intent-filter>
